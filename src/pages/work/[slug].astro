@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { projects } from '@/data/projects';
+import type { Project } from '@/data/projects';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { localPath } from '@/lib/links';
+import '@/styles/case-study.css';
+
+export function getStaticPaths() {
+  return projects.map(project => ({ params: { slug: project.slug }, props: { project } }));
+}
+interface Props { project: Project; }
+const { project } = Astro.props;
+const next = projects[(projects.findIndex(p => p.slug === project.slug) + 1) % projects.length];
+const ongoing = project.status === 'Ongoing work';
+---
+<Layout title={`${project.title} — Harsh Kumar`} description={project.description}>
+  <article class={`case-study case-${project.slug}`}>
+    <header class="case-hero shell">
+      <div class="case-breadcrumb-row">
+        <a class="back-link" href={localPath('#work')}><ArrowLeft size={16} aria-hidden="true" /> Back to my work</a>
+        <span class="case-document-label">PROJECT NOTES / {project.number}</span>
+      </div>
+      <p class="case-project-label">{project.company} <span aria-hidden="true">/</span> {project.role}</p>
+      <h1>{project.title}</h1>
+      <p class="case-description">{project.description}</p>
+      <div class="project-tags">{project.tags.map(tag => <Badge variant="outline">{tag}</Badge>)}</div>
+      <dl class="case-meta">
+        <div><dt>Company</dt><dd>{project.company}</dd></div>
+        <div><dt>My role</dt><dd>{project.role}</dd></div>
+        <div><dt>Period</dt><dd>{project.period}</dd></div>
+        <div><dt>Status</dt><dd><span class={`case-status ${ongoing ? 'case-status-ongoing' : ''}`}><span aria-hidden="true"></span>{project.status}</span></dd></div>
+      </dl>
+    </header>
+    <div class="case-metrics-wrap">
+      <dl class="shell case-metrics">
+        {project.metrics.map(metric => <div><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}
+      </dl>
+    </div>
+    <div class="case-body shell">
+      <nav class="case-chapter-nav" aria-label="Case study sections">
+        <span>ON THIS PAGE</span>
+        <a href="#context">01 <span>Context</span></a>
+        <a href="#contribution">02 <span>My work</span></a>
+        <a href="#outcome">03 <span>{ongoing ? 'Current focus' : 'Outcome'}</span></a>
+      </nav>
+      <section id="context" class="case-content-block">
+        <div class="case-section-title"><p class="eyebrow section-index">01 / CONTEXT</p><h2>What the team needed.</h2></div>
+        <div class="case-context-copy"><p>{project.context}</p></div>
+      </section>
+      <section class="case-flow-section" aria-labelledby="workflow-title">
+        <div class="case-flow-heading"><h2 id="workflow-title">A look at the workflow</h2><span>SIMPLIFIED OVERVIEW</span></div>
+        <ol class="case-flow">
+          {project.flow.map((step, index) => <li>
+            <span class="flow-step-number">0{index + 1}</span>
+            <h3>{step.name}</h3><p>{step.detail}</p>
+            {index < project.flow.length - 1 && <ArrowRight className="case-flow-arrow" size={17} aria-hidden="true" />}
+          </li>)}
+        </ol>
+      </section>
+      <section id="contribution" class="case-content-block case-contributions">
+        <div class="case-section-title"><p class="eyebrow section-index">02 / MY CONTRIBUTION</p><h2>What I worked on.</h2></div>
+        <div class="contribution-list">
+          {project.contributions.map((item, index) => <div class="case-contribution">
+            <span class="case-contribution-index" aria-hidden="true">0{index + 1}</span>
+            <div><h3>{item.title}</h3><p>{item.text}</p></div>
+          </div>)}
+        </div>
+      </section>
+      <section id="outcome" class="case-outcome">
+        <p class="eyebrow section-index">03 / {ongoing ? 'CURRENT FOCUS' : 'OUTCOME'}</p>
+        <div class="case-outcome-content"><h2>{ongoing ? 'Where the work stands.' : 'What changed.'}</h2><p>{project.outcome}</p></div>
+      </section>
+      <p class="case-note">These notes describe my contributions to professional work. The workflow is a conceptual summary, with no internal code or product screens.</p>
+      <a class="next-project" href={localPath(`work/${next.slug}/`)}>
+        <span class="case-next-number" aria-hidden="true">{next.number}</span>
+        <div><span class="eyebrow">NEXT PROJECT</span><h2>{next.title}</h2></div>
+        <ArrowUpRight className="case-next-arrow" size={28} strokeWidth={1.5} aria-hidden="true" />
+      </a>
+    </div>
+  </article>
+</Layout>

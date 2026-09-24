@@ -1,0 +1,49 @@
+---
+import '@/styles/liquid-glass.css';
+---
+
+<script>
+  const surfaceSelector = '.header-inner, .hero-work, .project-feature, .project-small, .timeline-item, .skill-card, .credentials article, .contact-layout, .case-breadcrumb-row, .case-meta, .case-metrics, .case-flow-section';
+  const accessibility = window.matchMedia('(prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active)');
+  const pointerMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  // Keep inherited effect variables outside React's managed DOM. The island
+  // host is stable before hydration, while its children must match the server.
+  const materialHost = (surface: HTMLElement) => surface.closest<HTMLElement>('astro-island') ?? surface;
+
+  // Light follows a mouse only. No continuous animation, device sensors, or
+  // touch listeners; the default reflection stays still for reduced motion.
+  let activeSurface: HTMLElement | null = null;
+  let pendingSurface: HTMLElement | null = null;
+  let pointerX = 0;
+  let pointerY = 0;
+  let lightFrame = 0;
+  const resetLight = () => {
+    if (activeSurface) {
+      materialHost(activeSurface).style.removeProperty('--glass-light-x');
+      materialHost(activeSurface).style.removeProperty('--glass-light-y');
+    }
+    activeSurface = null;
+  };
+  const updateLight = () => {
+    lightFrame = 0;
+    if (!pointerMotion.matches || accessibility.matches || !pendingSurface) {
+      resetLight();
+      return;
+    }
+    if (activeSurface !== pendingSurface) resetLight();
+    activeSurface = pendingSurface;
+    const bounds = activeSurface.getBoundingClientRect();
+    materialHost(activeSurface).style.setProperty('--glass-light-x', `${pointerX - bounds.left}px`);
+    materialHost(activeSurface).style.setProperty('--glass-light-y', `${pointerY - bounds.top}px`);
+  };
+  document.addEventListener('pointermove', event => {
+    if (!pointerMotion.matches || accessibility.matches || event.pointerType === 'touch') return;
+    pendingSurface = event.target instanceof Element ? event.target.closest<HTMLElement>(surfaceSelector) : null;
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    if (!lightFrame) lightFrame = requestAnimationFrame(updateLight);
+  }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', resetLight);
+  pointerMotion.addEventListener('change', resetLight);
+  accessibility.addEventListener('change', resetLight);
+</script>

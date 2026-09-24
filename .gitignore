@@ -1,0 +1,39 @@
+# Dependencies and generated output
+node_modules/
+dist/
+.astro/
+.vite/
+*.tsbuildinfo
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.envrc
+.direnv/
+
+# Editor and local workspace settings
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# Logs and test artifacts
+*.log
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# Operating system files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

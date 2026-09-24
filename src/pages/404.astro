@@ -1,0 +1,8 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ActionLink from '@/components/ActionLink';
+import { localPath } from '@/lib/links';
+---
+<Layout title="Page not found — Harsh Kumar" description="This page could not be found. Explore Harsh Kumar’s portfolio.">
+  <section class="not-found shell"><p class="eyebrow section-index">404 / ROUTE NOT FOUND</p><h1>A small detour.</h1><p>This page isn’t here, but the work is.</p><ActionLink href={localPath()} label="Back to the portfolio" className="primary-cta"/></section>
+</Layout>

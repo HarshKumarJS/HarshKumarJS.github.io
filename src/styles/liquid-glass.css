@@ -1,0 +1,46 @@
+/* Decorative reflections stay clear of type and interactive content. */
+:is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section) {
+  position:relative;
+}
+
+@supports (mask-composite:exclude) or (-webkit-mask-composite:xor) {
+  :is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section)::before,
+  :is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section)::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+  }
+  :is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section)::before {
+    z-index:1;
+    padding:9px;
+    background:linear-gradient(135deg,rgba(255,255,255,.045),transparent 35%,transparent 68%,rgba(255,255,255,.025));
+  }
+  :is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section)::after {
+    z-index:2;
+    padding:1px;
+    background:
+      radial-gradient(300px circle at var(--glass-light-x,22%) var(--glass-light-y,0%),rgba(255,255,255,.64),transparent 65%),
+      linear-gradient(140deg,rgba(255,255,255,.28),rgba(255,255,255,.015) 35%,rgba(255,255,255,.03) 62%,rgba(255,255,255,.20));
+  }
+  /* Keep one reflection on the header and project panel's actual perimeter. */
+  .site-header .header-inner,.hero .hero-work { border-color:transparent; }
+  .site-header .header-inner::before,.hero .hero-work::before { content:none; }
+  .site-header .header-inner::after,.hero .hero-work::after {
+    inset:-1px;
+    background:
+      radial-gradient(300px circle at var(--glass-light-x,22%) var(--glass-light-y,0%),rgba(255,255,255,.28),transparent 65%),
+      linear-gradient(140deg,rgba(255,255,255,.20),rgba(255,255,255,.10) 45%,rgba(255,255,255,.16));
+  }
+}
+
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active) {
+  .site-header .header-inner,.hero .hero-work { border-color:var(--border-strong); }
+  :is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section)::before,
+  :is(.header-inner,.hero-work,.project-feature,.project-small,.timeline-item,.skill-card,.credentials article,.contact-layout,.case-breadcrumb-row,.case-meta,.case-metrics,.case-flow-section)::after { display:none; }
+}
