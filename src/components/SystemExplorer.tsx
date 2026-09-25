@@ -84,12 +84,12 @@ export default function SystemExplorer() {
       </div>
       <TabsContent value="architecture" className="wb-content">
         <div className="wb-canvas">
-          <svg className="wb-connections" viewBox="0 0 500 274" preserveAspectRatio="none" fill="none" aria-hidden="true">
-            <path className={`wb-line ${step > 0 ? 'wb-line-done' : ''}`} d="M128 64H372"/>
-            <path className={`wb-line ${step > 1 ? 'wb-line-done' : ''}`} d="M372 64V180"/>
-            <path className={`wb-line ${step > 2 ? 'wb-line-done' : ''}`} d="M372 180H128"/>
-            <path className={`wb-line wb-line-return ${complete ? 'wb-line-done' : ''}`} d="M128 180V244H239"/>
-            <path className="wb-arrow" d="m249 60 5 4-5 4m119 45 4 5 4-5m-125 63-5 4 5 4"/>
+          <svg className="wb-connections" viewBox="0 0 500 240" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <path className={`wb-line ${step > 0 ? 'wb-line-done' : ''}`} d="M128 56H372"/>
+            <path className={`wb-line ${step > 1 ? 'wb-line-done' : ''}`} d="M372 56V158"/>
+            <path className={`wb-line ${step > 2 ? 'wb-line-done' : ''}`} d="M372 158H128"/>
+            <path className={`wb-line wb-line-return ${complete ? 'wb-line-done' : ''}`} d="M128 158V214H239"/>
+            <path className="wb-arrow" d="M249 52l5 4-5 4M368 103l4 5 4-5M251 154l-5 4 5 4"/>
           </svg>
           {sequence.map((key, index) => {
             const item = layers[key];
