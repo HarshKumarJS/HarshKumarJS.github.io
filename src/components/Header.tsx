@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { localPath } from '@/lib/links';
+import NavIcon from '@/components/NavIcon';
 
 const links = [['Work', 'work'], ['Experience', 'experience'], ['Toolkit', 'skills'], ['About', 'about']] as const;
 
@@ -32,7 +33,12 @@ export default function Header() {
         <div className="reading-progress" ref={progress} aria-hidden="true"/>
         <a className="wordmark" href={home} aria-label="Harsh Kumar — home"><span className="brand-mark">hk<span>.</span></span><span className="wordmark-text">harsh kumar<span className="wordmark-dot">.</span><small>SOFTWARE ENGINEER</small></span></a>
         <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map(([label, id]) => <a key={id} href={`${home}#${id}`} aria-current={active===id?'location':undefined} className={active===id?'nav-active':''}>{label}</a>)}
+          {links.map(([label, id]) => (
+            <a key={id} href={`${home}#${id}`} aria-current={active===id?'location':undefined} className={active===id?'nav-active':''}>
+              <NavIcon name={id} className={`nav-icon nav-icon-${id}`}/>
+              <span className="nav-label">{label}</span>
+            </a>
+          ))}
         </nav>
         <a className="desktop-contact" href={`${home}#contact`}>Let’s talk <ArrowUpRight size={16} aria-hidden="true" /></a>
         <div className="mobile-nav">

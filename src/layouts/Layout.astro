@@ -4,9 +4,7 @@ import '@fontsource-variable/inter';
 import '@fontsource-variable/jetbrains-mono';
 import '@/styles/global.css';
 import '@/styles/portfolio.css';
-import glassBackdrop from '@/assets/glass-water.svg?url';
 import Header from '@/components/Header';
-import LiquidGlass from '@/components/LiquidGlass.astro';
 import { profile } from '@/data/profile';
 import { localPath } from '@/lib/links';
 interface Props { title?: string; description?: string; }
@@ -18,7 +16,7 @@ const canonical = new URL(Astro.url.pathname, profile.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="theme-color" content="#050505" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -30,19 +28,18 @@ const canonical = new URL(Astro.url.pathname, profile.site);
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type':'Person', name:profile.name, jobTitle:profile.role, url:profile.site, sameAs:[profile.github,profile.linkedin], knowsAbout:['Java','Spring Boot','PostgreSQL','Backend engineering'] })}/>
   </head>
-  <body style={{ '--glass-art': `url("${glassBackdrop}")` }}>
+  <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <Header client:load />
     <main id="main"><slot /></main>
     <footer class="site-footer shell"><div class="footer-top"><a class="footer-wordmark" href={localPath()}>Harsh Kumar<span>.</span></a><p>Thanks for taking a look.<br/><span>You can find me on GitHub or over email.</span></p><a class="back-top" href="#main" aria-label="Back to top">↑</a></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Harsh Kumar</span><span>HARYANA, INDIA</span><a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a></div></footer>
-    <LiquidGlass />
     <script>
       const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (!motion.matches && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver(entries => {
           for (const entry of entries) {
             if (entry.isIntersecting) {
-              entry.target.animate([{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 700, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'none' });
+              entry.target.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 480, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'none' });
               observer.unobserve(entry.target);
             }
           }

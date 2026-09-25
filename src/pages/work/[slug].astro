@@ -22,10 +22,15 @@ const ongoing = project.status === 'Ongoing work';
         <a class="back-link" href={localPath('#work')}><ArrowLeft size={16} aria-hidden="true" /> Back to my work</a>
         <span class="case-document-label">PROJECT NOTES / {project.number}</span>
       </div>
-      <p class="case-project-label">{project.company} <span aria-hidden="true">/</span> {project.role}</p>
-      <h1>{project.title}</h1>
-      <p class="case-description">{project.description}</p>
-      <div class="project-tags">{project.tags.map(tag => <Badge variant="outline">{tag}</Badge>)}</div>
+      <div class="case-heading">
+        <div class="case-heading-copy">
+          <p class="case-project-label">{project.company} <span aria-hidden="true">/</span> {project.role}</p>
+          <h1>{project.title}</h1>
+          <p class="case-description">{project.description}</p>
+          <div class="project-tags">{project.tags.map(tag => <Badge variant="outline">{tag}</Badge>)}</div>
+        </div>
+        <span class="case-hero-number" aria-hidden="true">{project.number}</span>
+      </div>
       <dl class="case-meta">
         <div><dt>Company</dt><dd>{project.company}</dd></div>
         <div><dt>My role</dt><dd>{project.role}</dd></div>

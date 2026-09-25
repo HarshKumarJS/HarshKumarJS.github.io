@@ -1,0 +1,171 @@
+---
+// A decorative, conceptual view of the layers behind a backend application.
+---
+
+<figure class="stack-artwork" aria-label="An architectural illustration of API, business logic, and data layers">
+  <svg class="stack-sculpture" viewBox="0 0 560 480" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="stack-api-surface" x1="155" y1="53" x2="353" y2="213" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#25252f" />
+        <stop offset=".52" stop-color="#15151c" />
+        <stop offset="1" stop-color="#0b0b0e" />
+      </linearGradient>
+      <linearGradient id="stack-logic-surface" x1="132" y1="64" x2="360" y2="220" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#2a211e" />
+        <stop offset=".55" stop-color="#1a1715" />
+        <stop offset="1" stop-color="#100e0d" />
+      </linearGradient>
+      <linearGradient id="stack-data-surface" x1="140" y1="62" x2="349" y2="220" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#29251c" />
+        <stop offset=".52" stop-color="#191813" />
+        <stop offset="1" stop-color="#0e0e0b" />
+      </linearGradient>
+      <linearGradient id="stack-metal-edge" x1="78" y1="146" x2="475" y2="199" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#2d2c2a" />
+        <stop offset=".49" stop-color="#131313" />
+        <stop offset=".51" stop-color="#252525" />
+        <stop offset="1" stop-color="#121212" />
+      </linearGradient>
+      <radialGradient id="stack-ground" cx=".5" cy=".5" r=".5">
+        <stop stop-color="#eed792" stop-opacity=".09" />
+        <stop offset="1" stop-color="#eed792" stop-opacity="0" />
+      </radialGradient>
+      <pattern id="stack-register-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r=".7" fill="#f5f3ee" fill-opacity=".1" />
+      </pattern>
+      <path id="stack-plate" d="M84 120 265 46Q277 41 289 46L472 120Q484 125 472 130L289 205Q277 210 265 205L84 130Q72 125 84 120Z" />
+      <path id="stack-edge" d="M78 126Q78 129 84 132L265 207Q277 212 289 207L472 132Q478 129 478 126V138Q478 141 472 144L289 219Q277 224 265 219L84 144Q78 141 78 138Z" />
+      <g id="stack-screw">
+        <ellipse rx="3.4" ry="1.5" fill="#050505" stroke="currentColor" stroke-opacity=".5" stroke-width=".65" />
+        <path d="M-1.5 0h3" stroke="currentColor" stroke-opacity=".65" stroke-width=".65" />
+      </g>
+    </defs>
+
+    <rect x="28" y="12" width="504" height="448" fill="url(#stack-register-grid)" class="register-grid" />
+    <path d="M28 33V13h20M512 13h20v20M28 437v20h20M512 457h20v-20" stroke="#f5f3ee" stroke-opacity=".14" />
+    <ellipse cx="278" cy="421" rx="241" ry="52" fill="url(#stack-ground)" />
+
+    <g class="construction-lines" stroke="#77766f" stroke-opacity=".32" stroke-dasharray="2 6">
+      <path d="M98 132v202M455 132v202M277 211v210" />
+      <path d="m98 335 179 73 179-73" />
+    </g>
+
+    <g class="stack-layer data-layer" transform="translate(0 200)">
+      <use href="#stack-edge" fill="url(#stack-metal-edge)" />
+      <use href="#stack-plate" fill="url(#stack-data-surface)" stroke="currentColor" stroke-opacity=".42" stroke-width="1" />
+      <path d="m86 135 180 74q11 5 22 0l181-74" stroke="currentColor" stroke-opacity=".75" stroke-width="1.25" />
+      <path d="m86 142 180 74q11 5 22 0l181-74" stroke="#000" stroke-width="1" />
+      <g transform="matrix(.97 .4 -.97 .4 277 50)">
+        <rect x="25" y="24" width="149" height="149" rx="5" fill="#eed792" fill-opacity=".025" stroke="#eed792" stroke-opacity=".23" />
+        <path d="M25 53h149M25 82h149M25 112h149M25 142h149M55 53v120M114 53v120" stroke="#eed792" stroke-opacity=".16" />
+        <rect x="34" y="34" width="47" height="8" rx="2" fill="#eed792" fill-opacity=".55" />
+        <rect x="91" y="35" width="31" height="6" rx="1" fill="#eed792" fill-opacity=".18" />
+        <g fill="#eed792" fill-opacity=".5">
+          <circle cx="39" cy="67" r="3" /><circle cx="39" cy="97" r="3" />
+          <circle cx="39" cy="127" r="3" /><circle cx="39" cy="157" r="3" />
+        </g>
+        <path d="M66 68h32M126 68h30M66 97h23M126 97h22M66 127h32M126 127h29M66 157h27M126 157h19" stroke="#eed792" stroke-opacity=".35" stroke-width="4" stroke-linecap="round" />
+      </g>
+      <use href="#stack-screw" x="98" y="126" /><use href="#stack-screw" x="456" y="126" />
+      <use href="#stack-screw" x="277" y="56" /><use href="#stack-screw" x="277" y="197" />
+      <path d="m305 201 27-11" stroke="#eed792" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <g class="stack-layer logic-layer" transform="translate(0 100)">
+      <use href="#stack-edge" fill="url(#stack-metal-edge)" />
+      <use href="#stack-plate" fill="url(#stack-logic-surface)" stroke="currentColor" stroke-opacity=".5" stroke-width="1" />
+      <path d="m86 135 180 74q11 5 22 0l181-74" stroke="currentColor" stroke-opacity=".85" stroke-width="1.25" />
+      <path d="m86 142 180 74q11 5 22 0l181-74" stroke="#000" stroke-width="1" />
+      <g transform="matrix(.97 .4 -.97 .4 277 50)">
+        <path d="M24 45h41v28M24 89h32M24 143h41v-19M175 45h-39v28M175 98h-31M175 143h-39v-19M101 22v32M101 143v32" stroke="#ff8a65" stroke-opacity=".45" stroke-width="1.5" />
+        <rect x="57" y="56" width="86" height="87" rx="8" fill="#0c0b0a" stroke="#ff8a65" stroke-opacity=".65" />
+        <rect x="64" y="63" width="72" height="73" rx="4" fill="#ff8a65" fill-opacity=".055" stroke="#ff8a65" stroke-opacity=".22" />
+        <path d="m91 83-16 16 16 16m18-32 16 16-16 16" stroke="#ff8a65" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="m104 80-8 38" stroke="#ff8a65" stroke-opacity=".6" stroke-width="2" />
+        <g fill="#ff8a65">
+          <circle cx="24" cy="45" r="3" /><circle cx="24" cy="89" r="3" /><circle cx="24" cy="143" r="3" />
+          <circle cx="175" cy="45" r="3" /><circle cx="175" cy="98" r="3" /><circle cx="175" cy="143" r="3" />
+          <circle cx="101" cy="22" r="3" /><circle cx="101" cy="175" r="3" />
+        </g>
+      </g>
+      <use href="#stack-screw" x="98" y="126" /><use href="#stack-screw" x="456" y="126" />
+      <use href="#stack-screw" x="277" y="56" /><use href="#stack-screw" x="277" y="197" />
+      <path d="m305 201 27-11" stroke="#ff8a65" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <g class="stack-layer api-layer">
+      <use href="#stack-edge" fill="url(#stack-metal-edge)" />
+      <use href="#stack-plate" fill="url(#stack-api-surface)" stroke="currentColor" stroke-opacity=".65" stroke-width="1" />
+      <path d="M87 121 266 47q11-5 22 0l179 74" stroke="#f5f3ee" stroke-opacity=".25" stroke-width=".75" />
+      <path d="m86 135 180 74q11 5 22 0l181-74" stroke="currentColor" stroke-opacity=".95" stroke-width="1.25" />
+      <path d="m86 142 180 74q11 5 22 0l181-74" stroke="#000" stroke-width="1" />
+      <g transform="matrix(.97 .4 -.97 .4 277 50)">
+        <rect x="26" y="30" width="148" height="135" rx="7" fill="#050505" fill-opacity=".28" stroke="#a5b4fc" stroke-opacity=".32" />
+        <path d="M26 56h148" stroke="#a5b4fc" stroke-opacity=".25" />
+        <circle cx="39" cy="43" r="2.3" fill="#a5b4fc" fill-opacity=".8" />
+        <circle cx="48" cy="43" r="2.3" fill="#a5b4fc" fill-opacity=".4" />
+        <circle cx="57" cy="43" r="2.3" fill="#a5b4fc" fill-opacity=".2" />
+        <text x="40" y="96" fill="#dddffa" font-size="28" font-weight="500" letter-spacing="-1.5">API</text>
+        <path d="M41 116h23m9 0h41m-73 13h52m8 0h28m-88 13h22m9 0h37" stroke="#a5b4fc" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" />
+        <path d="m145 77 10 9-10 9m-17-18-10 9 10 9" stroke="#a5b4fc" stroke-opacity=".75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="m138 75-5 22" stroke="#a5b4fc" stroke-opacity=".5" stroke-width="1.5" />
+      </g>
+      <use href="#stack-screw" x="98" y="126" /><use href="#stack-screw" x="456" y="126" />
+      <use href="#stack-screw" x="277" y="56" /><use href="#stack-screw" x="277" y="197" />
+      <path d="m305 201 27-11" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <g class="plate-annotations">
+      <path d="M435 57h38v45" stroke="#a5b4fc" stroke-opacity=".45" />
+      <circle cx="473" cy="103" r="2" fill="#a5b4fc" />
+      <text x="433" y="47" text-anchor="end" fill="#a5b4fc">01 / INTERFACE</text>
+      <path d="M173 269 136 285H37" stroke="#ff8a65" stroke-opacity=".45" />
+      <circle cx="174" cy="268" r="2" fill="#ff8a65" />
+      <text x="37" y="276" fill="#ff8a65">02 / LOGIC</text>
+      <path d="M454 383v46h-41" stroke="#eed792" stroke-opacity=".45" />
+      <circle cx="454" cy="382" r="2" fill="#eed792" />
+      <text x="411" y="448" text-anchor="end" fill="#eed792">03 / PERSISTENCE</text>
+    </g>
+    <g class="drawing-label" fill="#8c8b85">
+      <text x="39" y="437">BACKEND</text>
+      <text x="39" y="450">EXPLODED VIEW</text>
+    </g>
+  </svg>
+  <figcaption>
+    <span class="legend-api"><i></i> API</span>
+    <span class="legend-logic"><i></i> Business logic</span>
+    <span class="legend-data"><i></i> Data</span>
+  </figcaption>
+</figure>
+
+<style>
+  .stack-artwork { width:100%; max-width:570px; margin:0; isolation:isolate; }
+  .stack-sculpture { width:100%; height:auto; display:block; overflow:visible; }
+  .stack-sculpture text { font-family:var(--font-mono, 'JetBrains Mono Variable', monospace); }
+  .api-layer { color:#a5b4fc; }
+  .logic-layer { color:#ff8a65; }
+  .data-layer { color:#eed792; }
+  .plate-annotations { font-size:14px; letter-spacing:.8px; }
+  .drawing-label { font-size:12px; letter-spacing:.8px; }
+  .stack-layer { transition:translate .65s cubic-bezier(.2,.7,.2,1); }
+  figcaption { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px 28px; margin-top:-2px; font-family:var(--font-mono, 'JetBrains Mono Variable', monospace); font-size:12px; line-height:1.6; letter-spacing:.2px; color:#aaa8a2; }
+  figcaption span { display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
+  figcaption i { width:5px; height:5px; display:block; border-radius:1px; }
+  .legend-api i { background:#a5b4fc; }
+  .legend-logic i { background:#ff8a65; }
+  .legend-data i { background:#eed792; }
+  @media (hover:hover) and (prefers-reduced-motion:no-preference) {
+    .stack-artwork:hover .api-layer { translate:0 -8px; }
+    .stack-artwork:hover .logic-layer { translate:0 -3px; }
+  }
+  @media (max-width:480px) {
+    figcaption { gap:13px; }
+    figcaption span { gap:6px; }
+    .register-grid { opacity:.6; }
+  }
+  @media (prefers-reduced-motion:reduce) { .stack-layer { transition:none; } }
+  @media (forced-colors:active) {
+    .stack-sculpture { forced-color-adjust:none; }
+    figcaption i { forced-color-adjust:none; }
+  }
+</style>
